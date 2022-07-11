@@ -12,7 +12,9 @@ enabled_site_setting :telegram_notifications_enabled
 
 after_initialize do
   
-  
+ Discourse::Application.routes.append do
+ "/mypage77" => "my#zhandos"  
+ end  
  
 
   module ::DiscourseTelegramNotifications
