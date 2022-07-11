@@ -11,6 +11,9 @@ require 'cgi'
 enabled_site_setting :telegram_notifications_enabled
 
 after_initialize do
+  
+  
+ get '/mypage777' => 'my#zhandos'  
 
   module ::DiscourseTelegramNotifications
     PLUGIN_NAME ||= "discourse_telegram_notifications".freeze
