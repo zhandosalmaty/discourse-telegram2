@@ -55,7 +55,7 @@ after_initialize do
         known_user = false
 
         begin
-          user_custom_field = UserCustomField.find_by(name: "telegram_chat_id", value: chat_id)
+          user_custom_field = CategoryCustomField.find_by(name: "telegram_chat_id", value: chat_id)
           user = User.find(user_custom_field.user_id)
           message_text = I18n.t(
             "discourse_telegram_notifications.known-user",
