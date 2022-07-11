@@ -13,7 +13,7 @@ enabled_site_setting :telegram_notifications_enabled
 after_initialize do
   
  Discourse::Application.routes.append do
-   get '/today777' => 'my#zhandos'  
+   get '/today777' => 'docs#zhandos'  
  end  
  
 
