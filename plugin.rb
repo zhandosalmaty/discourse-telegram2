@@ -12,8 +12,8 @@ enabled_site_setting :telegram_notifications_enabled
 
 after_initialize do
   
- DiscourseTelegramNotifications::Engine.routes.draw do
- get "/mypage777" => "my#zhandos"  
+ Discourse::Application.routes.append do
+   get '/today777' => 'my#zhandos'  
  end  
  
 
