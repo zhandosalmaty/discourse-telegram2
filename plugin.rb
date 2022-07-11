@@ -4,7 +4,7 @@
 # about: A plugin which posts all user notifications to a telegram message
 # version: 0.1
 # authors: David Taylor
-# url: https://github.com/davidtaylorhq/discourse-telegram-notifications
+# url: https://github.com/zhandosalmaty/discourse-telegram2
 
 require 'cgi'
 
