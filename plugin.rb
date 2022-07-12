@@ -55,7 +55,7 @@ after_initialize do
 		@latest = Category.where("latest_post_id = ?", post['post']['category_id'].to_i).first  
 		@last = @latest.id
 	  
-		@myfield = CategoryCustomField.where("category_id = ? AND name = ?", @last, "mytelegram").first
+		@myfield = CategoryCustomField.where("category_id = ? AND name = ?", post['post']['category_id'].to_i, "mytelegram").first
 		@mytele = @myfield.value
 	  
 		message2 = {
