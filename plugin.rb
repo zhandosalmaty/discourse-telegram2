@@ -47,6 +47,31 @@ after_initialize do
         return
       end
 
+	    
+	    
+	    
+	  if params[:web_hook].present?
+
+		@latest = Category.where("latest_post_id = ?", post['post']['category_id'].to_i).first  
+		@last = @latest.id
+	  
+		@myfield = CategoryCustomField.where("category_id = ? AND name = ?", @last, "mytelegram").first
+		@mytele = @myfield.value
+	  
+		message2 = {
+          chat_id: @mytele,
+          text: message_text,
+          parse_mode: "html",
+          disable_web_page_preview: true,
+        }
+		
+		DiscourseTelegramNotifications::TelegramNotifier.sendMessage(message2)
+	  end		    
+	    
+	    
+	    
+	    
+	    
       # If it's a new message (telegram also sends hooks for other reasons that we don't care about)
       if params.key?('message')
 
