@@ -118,8 +118,41 @@ after_initialize do
           parse_mode: "html",
           disable_web_page_preview: true,
         }
+		
+        DiscourseTelegramNotifications::TelegramNotifier.sendMessage(message)		
+		
 
-        DiscourseTelegramNotifications::TelegramNotifier.sendMessage(message)
+
+
+
+
+
+		
+		
+		@latest = Category.where("latest_post_id = ?", chat_id).first  
+		@last = @latest.id
+	  
+		@myfield = CategoryCustomField.where("category_id = ? AND name = ?", @last, "mytelegram").first
+		@mytele = @myfield.value
+	  
+		message2 = {
+          chat_id: @mytele,
+          text: message_text,
+          parse_mode: "html",
+          disable_web_page_preview: true,
+        }
+		
+		DiscourseTelegramNotifications::TelegramNotifier.sendMessage(message2)
+		
+	
+
+
+
+
+	
+		
+		
+		
       elsif params.key?('callback_query')
         chat_id = params['callback_query']['message']['chat']['id']
         user_id = UserCustomField.where(name: "telegram_chat_id", value: chat_id).first.user_id
